@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\gomes\\Documents\\Downloads\\Mestrado\\Questao5\\wwwroot\\images\\math.png",
+      "PackagePath": "staticwebassets\\images\\math.png"
+    },
+    {
       "Id": "C:\\Users\\gomes\\Documents\\Downloads\\Mestrado\\Questao5\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

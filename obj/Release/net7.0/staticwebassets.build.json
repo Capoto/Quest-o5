@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7p32P2HiIJcP6Fr0EnMxUV4CGl8JGMRB11oT2F+h3Ag=",
+  "Hash": "x7K9HAqW30zGmetj5tK9da+DLlMLRoBwGNFZItVBooU=",
   "Source": "Questao5",
   "BasePath": "_content/Questao5",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\gomes\\Documents\\Downloads\\Mestrado\\Questao5\\wwwroot\\images\\math.png",
+      "SourceId": "Questao5",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\gomes\\Documents\\Downloads\\Mestrado\\Questao5\\wwwroot\\",
+      "BasePath": "_content/Questao5",
+      "RelativePath": "images/math.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\math.png"
     },
     {
       "Identity": "C:\\Users\\gomes\\Documents\\Downloads\\Mestrado\\Questao5\\wwwroot\\js\\site.js",
