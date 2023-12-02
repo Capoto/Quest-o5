@@ -42,12 +42,24 @@ public class HomeController : Controller
        int cont = 0;
        foreach (var item in grafic.variable)
        {
+            item.X1 = item.X1.Replace('.', ',');
             if(cont==0){
             wrtu += item.X1+"X"+Convert.ToString(cont);}
             else{
                 wrtu += " + "+item.X1+"X"+Convert.ToString(cont);
             }
             cont++;
+       }
+
+       double[] funcaoobjetivo = new double[cont];
+       
+       int conta = 0;
+       foreach (var item in grafic.variable)
+       {
+            Console.WriteLine(item.X1);
+            item.X1 = item.X1.Replace('.',',');
+            funcaoobjetivo[conta] = Convert.ToDouble(item.X1);
+            conta++;
        }
 
         ViewData["Equacao"] = wrtu; 
@@ -69,6 +81,7 @@ public class HomeController : Controller
        if(string.Compare(item.Sinal,">=")==0){  
         constraint = solver.MakeConstraint(Convert.ToDouble(item.Resultado),double.PositiveInfinity ,"");
        }
+       
        else{
          constraint = solver.MakeConstraint(0, Convert.ToDouble(item.Resultado), "");
        }
@@ -76,6 +89,7 @@ public class HomeController : Controller
         contador=0;
         foreach (var item2 in item.variables)
         {
+          item2.X1 = item2.X1.Replace(' ', ',');
           constraint.SetCoefficient(x[contador], Convert.ToDouble(item2.X1));
           
           contador++;   
@@ -90,6 +104,7 @@ public class HomeController : Controller
         
         foreach (var item3 in grafic.variable)
        {
+            item3.X1 = item3.X1.Replace(' ', ',');
             objective.SetCoefficient(x[cont], Convert.ToDouble(item3.X1));
             //Console.WriteLine("{0} {1}",cont,item3.X1);
             cont++;
@@ -99,9 +114,11 @@ public class HomeController : Controller
        
         ViewData["erro"]="";
         
-        ViewData["Otimox"]=0.0;
-        ViewData["Otimoy"]=0.0;
+        ViewData["interation"]=0;
+        ViewData["Numerobranchandbounds"]=0;
         ViewData["final"]=0.0;
+        ViewData["Time"] =0.0;
+        ViewData["array"] = funcaoobjetivo;
         if(string.Compare(grafic.option,"Max")==0){ 
          objective.SetMaximization();
         } 
@@ -120,16 +137,22 @@ public class HomeController : Controller
         Console.WriteLine("Solution:");
         Console.WriteLine("Objective value = " + solver.Objective().Value());
         Console.WriteLine("Solution:");
+        ViewData["final"] =  solver.Objective().Value();
         Console.WriteLine("Optimal objective value = " + solver.Objective().Value());
-
+        
+        double soma=0.0;
         for (int j = 0; j < cont; ++j)
         {
+            soma+= x[j].SolutionValue()*funcaoobjetivo[j];
             Console.WriteLine("x[" + j + "] = " + x[j].SolutionValue());
         }
-
+        ViewData["array"] = x;
+        Console.WriteLine(soma);
         Console.WriteLine("\nAdvanced usage:");
         Console.WriteLine("Problem solved in " + solver.WallTime() + " milliseconds");
+        ViewData["interation"] = solver.Iterations();
         Console.WriteLine("Problem solved in " + solver.Iterations() + " iterations");
+        ViewData["Numerobranchandbounds"] = solver.Nodes();
         Console.WriteLine("Problem solved in " + solver.Nodes() + " branch-and-bound nodes");
     
         }
