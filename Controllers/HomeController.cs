@@ -52,7 +52,7 @@ public class HomeController : Controller
        }
 
        double[] funcaoobjetivo = new double[cont];
-       
+       double[] z = new double[cont];
        int conta = 0;
        foreach (var item in grafic.variable)
        {
@@ -141,14 +141,16 @@ public class HomeController : Controller
         Console.WriteLine("Optimal objective value = " + solver.Objective().Value());
         
         double soma=0.0;
-        for (int j = 0; j < cont; ++j)
+        for (int j = 0; j < cont; j++)
         {
             soma+= x[j].SolutionValue()*funcaoobjetivo[j];
+            z[j] = x[j].SolutionValue();
             Console.WriteLine("x[" + j + "] = " + x[j].SolutionValue());
         }
-        ViewData["array"] = x;
+        ViewData["array"] = z;
         Console.WriteLine(soma);
         Console.WriteLine("\nAdvanced usage:");
+        ViewData["Time"] = solver.WallTime();
         Console.WriteLine("Problem solved in " + solver.WallTime() + " milliseconds");
         ViewData["interation"] = solver.Iterations();
         Console.WriteLine("Problem solved in " + solver.Iterations() + " iterations");

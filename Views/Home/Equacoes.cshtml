@@ -27,10 +27,18 @@
 
 <h4>Resposta Final:</h4>
 @{
+    int cont2=0;
     if(@ViewData["erro"]=="O problema não tem uma solução ótima!"){
     <h5>@ViewData["erro"]</h5>}
     else{
+        <h5>Solução ótima: @ViewData["final"]</h5>
         
+        foreach(var k in @ViewData["array"] as double[]){
+            <h5>X[@cont2] = @k</h5>
+        }
+        <h5>Tempo para encontrar:  @ViewData["Time"] milliseconds</h5>
+        <h5>Números de Branch and Bround: @ViewData["Numerobranchandbounds"]</h5>
+        <h5>Números de Interação: @ViewData["interation"]</h5>
     }
     }
 
