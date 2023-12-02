@@ -76,6 +76,7 @@ public class HomeController : Controller
         
         
         int contador=0;
+        
         foreach(var item in grafic.Restricoes){
         Constraint constraint;
        if(string.Compare(item.Sinal,">=")==0){  
