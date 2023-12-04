@@ -42,7 +42,7 @@ public class HomeController : Controller
        int cont = 0;
        foreach (var item in grafic.variable)
        {
-            item.X1 = item.X1.Replace('.', ',');
+           
             if(cont==0){
             wrtu += item.X1+"X"+Convert.ToString(cont);}
             else{
@@ -57,7 +57,7 @@ public class HomeController : Controller
        foreach (var item in grafic.variable)
        {
             Console.WriteLine(item.X1);
-            item.X1 = item.X1.Replace('.',',');
+           
             funcaoobjetivo[conta] = Convert.ToDouble(item.X1);
             conta++;
        }
@@ -90,7 +90,7 @@ public class HomeController : Controller
         contador=0;
         foreach (var item2 in item.variables)
         {
-          item2.X1 = item2.X1.Replace(' ', ',');
+         
           constraint.SetCoefficient(x[contador], Convert.ToDouble(item2.X1));
           
           contador++;   
@@ -105,7 +105,7 @@ public class HomeController : Controller
         
         foreach (var item3 in grafic.variable)
        {
-            item3.X1 = item3.X1.Replace(' ', ',');
+            
             objective.SetCoefficient(x[cont], Convert.ToDouble(item3.X1));
             //Console.WriteLine("{0} {1}",cont,item3.X1);
             cont++;
