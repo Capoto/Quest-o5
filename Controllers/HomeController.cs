@@ -17,6 +17,8 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    
+
    [HttpGet]
     public IActionResult Index()
     {
@@ -44,9 +46,9 @@ public class HomeController : Controller
        {
            
             if(cont==0){
-            wrtu += item.X1+"X"+Convert.ToString(cont);}
+            wrtu += item.X1+"X"+Convert.ToString(cont+1);}
             else{
-                wrtu += " + "+item.X1+"X"+Convert.ToString(cont);
+                wrtu += " + "+item.X1+"X"+Convert.ToString(cont+1);
             }
             cont++;
        }
@@ -125,7 +127,8 @@ public class HomeController : Controller
         } 
         else{
             objective.SetMinimization();
-        }   
+        } 
+        
          Solver.ResultStatus resultStatus = solver.Solve();
 
         // Check that the problem has an optimal solution.
@@ -140,7 +143,7 @@ public class HomeController : Controller
         Console.WriteLine("Solution:");
         ViewData["final"] =  solver.Objective().Value();
         Console.WriteLine("Optimal objective value = " + solver.Objective().Value());
-        
+        Console.WriteLine("Optimal objective value = " + solver.Objective().BestBound());
         double soma=0.0;
         for (int j = 0; j < cont; j++)
         {

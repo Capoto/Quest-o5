@@ -39,14 +39,15 @@
     <h4>@equation @i.Sinal @i.Resultado</h4>
 }
 
+@{equation="";}
 @foreach(var i in Model.variable){
-    equation = "";
-    hu=1;
+    
+   
     if(hu==1){
-    equation += i.X1+Convert.ToString(hu);
+    equation += "X"+Convert.ToString(hu);
     }
     else{
-        equation += ","+i.X1+Convert.ToString(hu);
+        equation += ","+"X"+Convert.ToString(hu);
     }
     hu++;
     
@@ -69,10 +70,11 @@
         
         foreach(var k in @ViewData["array"] as double[]){
             <h5>X[@cont2] = @k</h5>
+            cont2++;
         }
         <h5>Tempo para encontrar:  @ViewData["Time"] milliseconds</h5>
         <h5>Números de Branch and Bround: @ViewData["Numerobranchandbounds"]</h5>
-        <h5>Números de Interação: @ViewData["interation"]</h5>
+        <h5>Números de Interações: @ViewData["interation"]</h5>
     }
     }
 
