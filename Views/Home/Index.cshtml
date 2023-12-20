@@ -79,7 +79,7 @@
     <label>Z=</label>
     for(int i =0;i<(loop2);i++){
         var j = i+1;
-    <input type="text" name="variable[@i].X1" /> <label>x @j</label>
+    <input type="text" name="variable[@i].X1" /> <label class="text-danger">X @j</label>
     }
     <br>
     <br>
@@ -92,7 +92,8 @@
             <br>
     <br>
         for(int j=0;j<(loop2);j++){
-    <input type="text" name="Restricoes[@i].variables[@j].X1" /> <label>x @j</label>
+            var w = j+1;
+    <input type="text" name="Restricoes[@i].variables[@j].X1" /> <label class="text-danger">X @w</label>
 
     }
     <select name="Restricoes[@i].Sinal">
